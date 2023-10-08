@@ -21,4 +21,4 @@ sudo ln -s `pwd`/print.py /bin/dprint
 dprint <filename>
 ```
 
-After printing the odd pages, to print the back side, take out the printed pages and reinsert to page tray. Then input `r` and press enter to print the back side.
+After printing the odd pages, to print the back side, take out the printed pages and reinsert to page tray. Then input `r` and press enter to print the even pages.
