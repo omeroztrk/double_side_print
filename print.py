@@ -1,7 +1,7 @@
 #!/bin/python3
 
 # This program creates a printer query for double side printing for a file
-# First parses a PDF file to odd and even pages. Then creates to pdf files
+# First parses a PDF file to odd and even pages. Then creates two seperate printer queries
 
 # read pdf file
 
@@ -18,14 +18,13 @@ except IndexError:
 evenname = "/tmp/" + str(uuid.uuid4()) + ".pdf"
 oddname = "/tmp/" + str(uuid.uuid4()) + ".pdf"
 
-# create odd.pdf
 pdfFileObj = open(filename, 'rb')
 pdfReader = pypdf.PdfReader(pdfFileObj)
 pdfWriter_odd = pypdf.PdfWriter()
 pdfWriter_even = pypdf.PdfWriter()
 
 
-# if page number is not even, add blank page at the end
+# if page number is not even, add blank page to the end
 if len(pdfReader.pages) % 2 != 0:
     pdfWriter_even.add_blank_page(pdfReader.pages[0].mediabox.width, pdfReader.pages[0].mediabox.height)
 
@@ -67,4 +66,3 @@ while r != "r":
 
 jobID = conn.printFile(choice,evenname, "test.pdf even pages", {})
 print(f"Job ID: {jobID}")
-# remove the files
